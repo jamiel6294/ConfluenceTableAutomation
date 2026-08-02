@@ -112,10 +112,3 @@ connection required).
   everything else renders as searchable/filterable text.
 - To switch data source (e.g. from REST to CSV export) change
   `DATA_SOURCE_TYPE` and `CONFIFORM_ENDPOINT` — no code changes required.
-
-All 26 tests still pass. Summary of changes made:
-
-services/transforms.py: "Awaited From" is now classified as a date field, and a computed "Days Ago" column (int((today - awaited_date).days)) is automatically appended — pure Python, no ConfiForms IFTTT needed. It's detected generically by field name, so it'll work across all 3 of your table views as long as they share the "Awaited From" field. Also fixed column-title generation to preserve acronyms/spacing ("Case ID" no longer becomes "Case Id").
-static/js/dashboard.js: added a number column type with red/amber severity coloring past 7/14 days; locked column widths (widthGrow: 0) so "Days Ago" no longer stretches disproportionately; default sort is now Days Ago ascending (earliest → longest wait).
-Tests updated/added (26 total, all passing) and verified visually via a live smoke test.
-For the 3-page merge/switcher: your current DataSource abstraction already takes one CONFIFORM_ENDPOINT. The natural extension later is a small config list of named endpoints and a toolbar tab/button group that calls /api/data?view=<name> — happy to build that when you're ready.
