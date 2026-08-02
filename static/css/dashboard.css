@@ -1,0 +1,155 @@
+:root {
+  --cf-navbar-bg: #1f2d3d;
+  --cf-overdue-bg: #fdecea;
+  --cf-complete-bg: #eaf7ec;
+  --cf-pending-bg: #fff8e6;
+  --cf-row-alt-bg: #f8f9fa;
+}
+
+body {
+  background-color: #f4f6f8;
+}
+
+.cf-navbar {
+  background-color: var(--cf-navbar-bg);
+  color: #fff;
+  padding: 0.75rem 1rem;
+}
+
+.cf-navbar .navbar-brand {
+  color: #fff;
+  font-weight: 600;
+}
+
+.cf-status .text-muted {
+  color: #cfd8e3 !important;
+}
+
+.cf-toolbar {
+  padding: 1rem 1rem 0.5rem;
+}
+
+.cf-view-switcher {
+  padding: 0.75rem 1rem 0;
+}
+
+.cf-view-switcher .btn-view {
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  color: #495057;
+  font-weight: 500;
+}
+
+.cf-view-switcher .btn-view:hover {
+  background-color: #f1f3f5;
+}
+
+.cf-view-switcher .btn-view.active {
+  background-color: var(--cf-navbar-bg);
+  border-color: var(--cf-navbar-bg);
+  color: #fff;
+}
+
+#cf-table {
+  margin: 0.5rem 1rem 1.5rem;
+}
+
+/* Status badges */
+.cf-status-badge {
+  color: #fff;
+  font-weight: 600;
+  padding: 0.35em 0.75em;
+  border-radius: 0.5rem;
+  text-transform: capitalize;
+}
+
+/* Progress bars */
+.cf-progress {
+  height: 1.25rem;
+  min-width: 100px;
+  background-color: #e9ecef;
+}
+
+.cf-progress .progress-bar {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Icons */
+.cf-icon {
+  color: #6c757d;
+  margin-right: 0.4rem;
+}
+
+/* Days Ago severity */
+.cf-days-ago-medium {
+  color: #b8860b;
+  font-weight: 600;
+}
+
+.cf-days-ago-high {
+  color: #dc3545;
+  font-weight: 700;
+}
+
+/* Highlighted search matches */
+mark {
+  background-color: #fff3a3;
+  padding: 0 0.1em;
+  border-radius: 0.2em;
+}
+
+/* Conditional row styling */
+.tabulator-row.cf-row-overdue {
+  background-color: var(--cf-overdue-bg) !important;
+}
+
+.tabulator-row.cf-row-complete {
+  background-color: var(--cf-complete-bg) !important;
+}
+
+.tabulator-row.cf-row-pending {
+  background-color: var(--cf-pending-bg) !important;
+}
+
+/* Alternating rows / hover, layered under conditional styling */
+.tabulator-row.tabulator-row-even {
+  background-color: var(--cf-row-alt-bg);
+}
+
+.tabulator-row:hover {
+  filter: brightness(0.97);
+}
+
+/* Sticky header + first column (Tabulator handles most of this; reinforce) */
+.tabulator .tabulator-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.tabulator-row .tabulator-cell:first-child,
+.tabulator-col:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 3;
+  background-color: inherit;
+}
+
+/* Responsive tweaks */
+@media (max-width: 991.98px) {
+  .cf-toolbar .form-select,
+  .cf-toolbar .form-control {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .cf-navbar .navbar-brand {
+    font-size: 1rem;
+  }
+
+  #cf-table {
+    margin: 0.5rem;
+  }
+}
